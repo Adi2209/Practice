@@ -5,29 +5,28 @@ using namespace std;
 int factorial(int n)
 {
 
-    if (n < 0)
-    {
-        return -1;
-    }
+    // base case
 
     if (n == 0)
     {
-
         return 1;
     }
 
-    else
-    {
-       return n *(factorial(n - 1));
-    }
+    int smallproblem = factorial(n - 1);
+    int bigproblem = n * smallproblem;
+
+    return bigproblem;
 }
 
 int main()
 {
     int n;
     cin >> n;
+    
+    int ans=factorial(n);
+    cout<<endl;
 
-    cout << "The value of factorial " << n << " is: " << factorial(n) << endl;
+    cout<<"The factorial of "<<n<<" is "<<ans<<endl;
 
     return 0;
 }
