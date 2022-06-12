@@ -1,11 +1,12 @@
-// final methods cannot be overridden
-class q15 {
-    // Can't be overridden
-    final void show() {}
-    
-}
-  
-class Child1 extends q5 {
-    // This would produce error
-    void show() {}
+public class q5
+{
+    public static void main(String args[])
+    {
+        int sum = 0;
+        for(int i = 0;i<args.length;i++)
+        {
+            sum+=Integer.parseInt(args[i]);
+        }
+        System.out.println(sum);
+    }
 }
