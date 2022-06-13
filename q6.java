@@ -1,34 +1,23 @@
-public class q6 {
+import java.applet.*;
+import java.awt.*;
 
-  public static void main(String[] args) {
-    String s1 = "HELLO";
-    String s2 = "hello world";
-    String s3 = "WELCOME to JAVA PROGRAMMING";
+public class q6 extends Applet {
 
-    System.out.println("\nPART A");
-    System.out.println(s1.equals(s2));
+  public void init() {
+    setForeground(Color.blue);
+    setBackground(Color.orange);
+  }
 
-    System.out.println(s2.equalsIgnoreCase(s3));
-    System.out.println(s1.length());
+  public void start() {}
 
-    System.out.println(s1.compareTo(s2));
+  public void stop() {}
 
-    System.out.println("\nPART B");
+  public void destroy() {}
 
-    System.out.println(s1.charAt(3));
-
-    System.out.println(s1.toLowerCase());
-
-    System.out.println(s2.toUpperCase());
-
-    System.out.println(s3.indexOf("to"));
-    String s4 = s1.concat(s3);
-    System.out.println(s4);
-    System.out.println(s2.contains("wor"));
-
-    System.out.println("\nPART C");
-    String formats1 = String.format("NAME= %s", s1);
-    byte[] by = s1.getBytes();
-    for (int i = 0; i < by.length; i++) System.out.println(by[i]);
+  public void paint(Graphics g) {
+    g.drawString("Roll No. - 20051634", 50, 100);
+    g.drawString("Name - Aditya", 50, 150);
+    g.drawString("Branch - CSE", 50, 200);
+    g.drawString("Section - CSE5", 50, 250);
   }
 }

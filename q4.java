@@ -1,33 +1,43 @@
+import java.io.*;
 import java.util.Scanner;
-
-class finaltest extends Exception{
-    finaltest(int val){
-        if(val < 0){
-            System.out.print("Negative ");
-        }else if(val > 0){
-            System.out.print("Positive ");
-        }else{
-            System.out.print("Zero ");
-        }
-    }
-}
-
-
+import java.io.CharArrayWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 public class q4 {
-    public static void main(String[] args){
+    public static void main(String args[])throws IOException
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter file name: ");
+        String path=input.next();
+        input.close();
+        //String path="text.txt";
+        CharArrayWriter out = new CharArrayWriter();
+        try{
+            FileReader r = new FileReader(path);
+                            
+            int x;
+            while(true){
+                x=r.read();
+                if(x==-1)
+                break;
 
-        Scanner in = new Scanner(System.in);
-
-        try {
-            System.out.print("Enter val: ");
-            int num = Integer.parseInt(in.next());
-            throw new finaltest(num);
-        }catch (finaltest e){
-            System.out.println("Value Exception");
+                char c=(char) x;
+                if(Character.isLowerCase(c))
+                c = Character.toUpperCase(c);
+                else if(Character.isUpperCase(c))
+                c = Character.toLowerCase(c);
+                if("aeiou".contains(Character.toLowerCase(c)+""))
+                c = '@';
+                
+                out.write(c);
+                
+            }
+            r.close();
+            FileWriter w = new FileWriter(path);
+            w.append(out.toString());
+            w.flush();
+            w.close();
         }
-        finally {  
-            System.out.println("finally block is always executed");  
-            }    
-
+        catch(Exception e){System.out.println(e);}
     }
 }
