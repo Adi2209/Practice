@@ -1,43 +1,52 @@
-import java.io.*;
 import java.util.Scanner;
-import java.io.CharArrayWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-public class q4 {
-    public static void main(String args[])throws IOException
-    {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter file name: ");
-        String path=input.next();
-        input.close();
-        //String path="text.txt";
-        CharArrayWriter out = new CharArrayWriter();
-        try{
-            FileReader r = new FileReader(path);
-                            
-            int x;
-            while(true){
-                x=r.read();
-                if(x==-1)
-                break;
+//q4
 
-                char c=(char) x;
-                if(Character.isLowerCase(c))
-                c = Character.toUpperCase(c);
-                else if(Character.isUpperCase(c))
-                c = Character.toLowerCase(c);
-                if("aeiou".contains(Character.toLowerCase(c)+""))
-                c = '@';
-                
-                out.write(c);
-                
-            }
-            r.close();
-            FileWriter w = new FileWriter(path);
-            w.append(out.toString());
-            w.flush();
-            w.close();
-        }
-        catch(Exception e){System.out.println(e);}
+
+class Shape {
+    public double showArea() {
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double showArea() {
+        return width * height;
+    }
+}
+
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double showArea() {
+        return 3.14 * radius * radius;
+    }
+}
+
+public class q4 {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        Shape[] shape = new Shape[2];
+        System.out.println("Enter Radius: ");
+        double r = sc.nextDouble();
+        shape[0] = new Circle(r);
+        System.out.println("Enter Length and Breadth: ");
+        double l = sc.nextDouble();
+        double b = sc.nextDouble();
+        shape[1] = new Rectangle(l, b);
+        System.out.println("Area of the Circle: " + shape[0].showArea());
+        System.out.println("Area of the Rectangle: " + shape[1].showArea());
+        sc.close();
     }
 }
